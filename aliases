@@ -1,0 +1,137 @@
+#folder
+alias kit='cd ${KIT}'
+alias dok='cd ${DOK}'
+alias srt='cd ${KIT}/srt'
+alias ees='cd ${KIT}/ees'
+alias pb='cd ${KIT}/pb'
+alias hlb='cd ${KIT}/hlb'
+alias zhlb='n ${KIT}/hlb/ZsmfHLB.tex'
+alias nt='cd ${KIT}/nt2'
+alias pls='cd ${KIT}/pls'
+alias kogSys='cd ${KIT}/kogSys'
+alias supra='cd ${KIT}/supra'
+alias it='cd ${KIT}/it2'
+alias vde='cd ${KIT}/vde'
+alias asck='cd ${KIT}/asck'
+alias paper='cd ${KIT}/paper'
+alias beschein='cd ${KIT}/bescheinigungen'
+alias bew='cd ${DOK}/Offizielles/BewerbungPraktikum'
+alias compu='cd ${DOK}/Computersach'
+alias skr='cd ${DOK}/Computersach/skripte'
+alias conf='cd ${HOME}/.config'
+alias bilder='cd $PIC'
+alias videos='cd $VID'
+
+#files
+alias coz='cd ~/.config && $EDITOR alex_zshrc'
+alias cob='cd ~/.config && $EDITOR alex_bashrc'
+alias con='cd ~/.config && $EDITOR nvim/init.vim'
+alias cos='cd ~/.config && $EDITOR sxhkd/sxhkdrc'
+alias coa='cd ~/.config && $EDITOR aliases'
+
+alias iskr='cd ${SCRIPTS} && $EDITOR alexinit.sh'
+
+alias bib='$EDITOR ~/vorlagen/alex.bib'
+
+#KITcar
+alias speed='cd ~/kitcar-ros/KITcar_brain/src/control/src/speed_controller/'
+alias ros='cd ~/kitcar-ros/'
+alias brain='cd ~/kitcar-ros/KITcar_brain/'
+alias test='cd ~/kitcar-ros/KITcar_brain/src/control/test/test_speed_controller/'
+alias statische='cd ~/kitcar/statische-disziplin'
+alias state='cd ~/kitcar/statische-disziplin/technical-part/navigation-control/state-estimation/'
+alias kitcar='cd ~/kitcar'
+alias techhsg='cd ~/kitcar/TechHSG'
+alias vonboard='kate ~/kitcar/kitcar-outside-com/virtuellesOnboarding/Mail_Admins_neues_Mitglied.txt ~/kitcar/kitcar-outside-com/virtuellesOnboarding/Mail_Admins_Mentor.txt'
+alias vonboard_mentor='xclip -selection c -i Mail_Admins_Mentor.txt'
+alias vonboard_neues='xclip -selection c -i Mail_Admins_neues_Mitglied.txt'
+alias nuc='ssh kitcar@10.10.0.1'
+
+#programs
+#git
+alias g='git'
+alias checkout='git checkout'
+alias gco='git checkout'
+alias gc='git commit'
+alias ga='git add'
+alias gs='git status'
+alias gd='git diff'
+alias pull='git pull'
+alias push='git push'
+alias status='git status'
+alias stats='git status'
+alias submodule='git submodule sync --recursive && git submodule update --init --recursive'
+function acommit(){
+[ -z $1 ] && message='alias commit' || message=$1
+git add . && git commit -m "$message" && git push
+} # only use this in personal repos
+
+#core stuff
+alias cl='clear'
+alias :q='exit'
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias cdl='cd && clear'
+alias cd..='cd ..'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias hist='history | fzf'
+alias hf='history | fzf'
+alias mv='mv -vi'
+alias cp='cp -v'
+alias rm='rm -vi'
+alias dd='dd status=progress'
+alias diff='colordiff'
+alias bt='bluetooth toggle'
+alias plasma-restart='kquitapp5 plasmashell && kstart5 plasmashell'
+#others
+alias v='$EDITOR'
+alias n='nvim'
+alias r='ranger'
+alias upg='sudo apt upgrade -y'
+alias inst='sudo apt install'
+alias autorm='sudo apt autoremove'
+alias scribus='cd ${BASIS}/Downloads/ && ./scribus-1.5.4-linux-x86_64.AppImage'
+alias matlab='cd /usr/local/MATLAB/R2019a/bin/ && ./matlab'
+alias spotify-cli='ncspot'
+alias h='htop'
+alias f='nvim $(rg -f | fzf)'
+alias copy='xclip -selection c'
+alias ilias='cd ~/.install/IliasDownloaderTool-kit && /usr/java/jre1.8.0_251/bin/java -jar Ilias-Downloader-Tool-kit-v1.2.2.jar'
+alias texcalc='latexcalc --pdflatex'
+alias jitsi='cd ~/.install && ./jitsi-meet-x86_64.AppImage --no-sandbox & disown'
+
+function merge() {
+diff -u $1 $2 > diff.tmp
+patch < diff.tmp
+rm -f diff.tmp
+}
+
+#templates
+alias move-gitignore='cp ~/vorlagen/gitignore .gitignore'
+function vorl() {
+[ -z $1 ] && NAME=vorlage || NAME=$( echo $1 | sed 's/.tex//g' )
+cp ~/vorlagen/vorlage.tex $NAME.tex
+}
+
+function templ() {
+[ -z $1 ] && NAME=template || NAME=$( echo $1 | sed 's/.tex//g' )
+cp ~/vorlagen/template.tex $NAME.tex
+}
+
+# disown
+alias firefox='firefox & disown'
+alias rocketchat='rocketchat-desktop & disown'
+function oku() {
+okular $1 & disown
+}
+
+#autogen password
+alias passwort-gen='echo $(date +%s | sha256sum | base64 | head -c 19)"#" | xclip -selection c'
+
+# clean up ~/
+alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"'

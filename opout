@@ -1,0 +1,6 @@
+#!/bin/bash
+# opout: "open output": A general handler for opening a file's intended output.
+
+basename="$(echo "$1" | sed 's/\.[^\/.]*$//')"
+
+okular $basename.pdf > /dev/null & disown

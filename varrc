@@ -1,0 +1,8 @@
+export ROS_PARALLEL_JOBS='-j1 -l1'
+
+export KIT='/home/alex/KIT'
+export BASIS='/home/alex'
+export DOK='/home/alex/Dokumente'
+export SCRIPTS='/home/alex/Dokumente/Computersach/skripte'
+export VID='/home/alex/Videos'
+export PIC='/home/alex/Bilder'
