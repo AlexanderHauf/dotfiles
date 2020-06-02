@@ -1,0 +1,18 @@
+# !/bin/sh
+
+# This script adds a string in the correct alphabetical order.
+# First input the file where the string should be placed in.
+# In second place add a string to be added in.
+# You have to use "" for multiple words.
+# Comments marked with # are ignored.
+
+#add the new word
+echo $2 >> $(pwd)/$1
+
+awk -F'#' '{print $1}' $(pwd)/$1 | sed -r '/^\s*$/d' | sort -bfg >> tmp_sort
+grep "#" $(pwd)/$1 > tmp_comment
+cat tmp_comment tmp_sort > $(pwd)/$1
+
+# clean up
+rm tmp_sort
+rm tmp_comment

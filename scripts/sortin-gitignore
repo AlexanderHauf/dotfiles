@@ -1,0 +1,22 @@
+# !/bin/sh
+
+# This script adds a string to a .gitignore 
+# file and then sorts the strings in the file 
+# in the correct alphabetical order.
+# Input a single word or use "".
+# Comments marked with # are ignored.
+
+#define file
+file=.gitignore
+file=$(pwd)/$file
+
+#add the new word
+echo $1 >> $file
+
+awk -F'#' '{print $1}' $file | sed -r '/^\s*$/d' | sort -bfg >> tmp_sort
+grep "#" $file > tmp_comment
+cat tmp_comment tmp_sort > $file
+
+# clean up
+rm tmp_sort
+rm tmp_comment
